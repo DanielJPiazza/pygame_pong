@@ -39,29 +39,36 @@ class Ball(pygame.Rect):
 # MAIN
 class Pong:
 	def __init__(self):
+		# Start Pygame instance.
+		pygame.init()
+		
 		# GAME & MAIN MENU VARIABLES
+		# Window parameters, for screen edge offset and initial position.
 		self.WINDOW_HEIGHT_OFFSET = 200
 		self.WINDOW_WIDTH_OFFSET = 300
-
 		self.WINDOW_X = 40
 		self.WINDOW_Y = 60
 		
+		# Paddle gameplay parameters.
 		self.PADDLE_WIDTH = 10
 		self.PADDLE_HEIGHT = 100
 		
+		# Ball gameplay parameters.
 		self.BALL_WIDTH = 10
 		self.BALL_VELOCITY = 10
 		
+		# White/black constants
 		self.WHITE = (255, 255, 255)
 		self.BLACK = (0, 0, 0)
 
+		# Main menu button properties.
 		self.MENU_BUTTON_WIDTH = 100
 		self.MENU_BUTTON_HEIGHT = 50
 		self.MENU_GREEN = (0, 255, 0)
 		self.MENU_RED = (255, 0, 0)
-		
-		# Start Pygame instance.
-		pygame.init()
+
+		# Create a font for main menu title text.
+		self.TITLE_MENU_FONT = pygame.font.SysFont(None, 124)
 		
 		# Screen setup.
 		pygame.display.set_caption("Pygame Pong")										# Window caption.
@@ -95,7 +102,7 @@ class Pong:
 		self.paddles = []
 		self.balls = []
 		
-		self.paddles.append(Paddle( # Left paddle.
+		self.paddles.append(Paddle( # LEFT PADDLE
 			self.BALL_VELOCITY,
 			pygame.K_w,
 			pygame.K_s,
@@ -105,7 +112,7 @@ class Pong:
 			self.PADDLE_HEIGHT
 		))
 
-		self.paddles.append(Paddle( # Right paddle.
+		self.paddles.append(Paddle( # RIGHT PADDLE
 			self.BALL_VELOCITY,
 			pygame.K_UP,
 			pygame.K_DOWN,
@@ -115,7 +122,7 @@ class Pong:
 			self.PADDLE_HEIGHT
 		))
 		
-		self.balls.append(Ball(
+		self.balls.append(Ball(		# BALL
 			self.BALL_VELOCITY,
 			self.WIDTH / 2 - self.BALL_WIDTH / 2,
 			self.HEIGHT / 2 - self.BALL_WIDTH / 2,
@@ -123,7 +130,7 @@ class Pong:
 			self.BALL_WIDTH
 		))
 		
-		# Add net to middle of screen.
+		# NET
 		self.central_line = pygame.Rect(self.WIDTH/2, 0, 1, self.HEIGHT)
 	
 	# Main menu - allows users to play or exit the program.
@@ -131,6 +138,10 @@ class Pong:
 		while True:			
 			# Redraw the screen.
 			self.screen.fill(self.BLACK)
+
+			# Title text
+			self.TITLE_MENU_TEXT = self.TITLE_MENU_FONT.render("PYGAME PONG", True, self.WHITE)
+			self.screen.blit(self.TITLE_MENU_TEXT, ((self.WIDTH/2) - (self.TITLE_MENU_TEXT.get_rect().width/2), self.HEIGHT * 0.20))
 			
 			# Menu buttons
 			green_button = pygame.draw.rect(
