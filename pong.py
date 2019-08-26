@@ -2,7 +2,7 @@
 
 # IMPORTS
 import pygame
-import os
+from os import environ
 from random import randint
 from sys import exit
 
@@ -73,7 +73,7 @@ class Pong:
 		
 		# Screen setup + clock/net creation.
 		pygame.display.set_caption("Pygame Pong")										# Window caption.
-		os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (self.WINDOW_X, self.WINDOW_Y)	# Initial window position.
+		environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (self.WINDOW_X, self.WINDOW_Y)	# Initial window position.
 		self.DISPLAY_INFO = pygame.display.Info()										# Get window info.
 		self.HEIGHT = self.DISPLAY_INFO.current_h - self.WINDOW_HEIGHT_OFFSET			# Screen height.
 		self.WIDTH = self.DISPLAY_INFO.current_w - self.WINDOW_WIDTH_OFFSET				# Screen width.
@@ -220,7 +220,7 @@ class Pong:
 			self.check_ball_hits_wall()
 			
 			# MOVE & DRAW
-			pygame.draw.rect(self.screen, self.WHITE, self.NET)	# NET
+			pygame.draw.rect(self.screen, self.WHITE, self.NET)				# NET
 			
 			for paddle in self.paddles:										# PADDLES
 				paddle.move_paddle(self.HEIGHT)
