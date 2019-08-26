@@ -55,7 +55,7 @@ class Pong:
 		
 		# Ball gameplay parameters.
 		self.BALL_WIDTH = 10
-		self.BALL_VELOCITY = 10
+		self.BALL_VELOCITY = 5
 		
 		# White/black constants
 		self.WHITE = (255, 255, 255)
@@ -235,7 +235,7 @@ class Pong:
 				
 			# Flip drawn graphics to screen, and manage the clock.
 			pygame.display.flip()
-			self.clock.tick(60)
+			self.clock.tick(120)
 		
 # START
 if __name__ == '__main__':
