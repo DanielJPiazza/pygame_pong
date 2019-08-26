@@ -70,16 +70,16 @@ class Pong:
 		# Create a main menu fonts.
 		self.TITLE_MENU_FONT = pygame.font.SysFont(pygame.font.get_default_font(), 130)
 		self.BUTTON_MENU_FONT = pygame.font.SysFont(pygame.font.get_default_font(), 22)
-
 		
-		# Screen setup.
+		# Screen setup + clock/net creation.
 		pygame.display.set_caption("Pygame Pong")										# Window caption.
 		os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (self.WINDOW_X, self.WINDOW_Y)	# Initial window position.
 		self.DISPLAY_INFO = pygame.display.Info()										# Get window info.
 		self.HEIGHT = self.DISPLAY_INFO.current_h - self.WINDOW_HEIGHT_OFFSET			# Screen height.
 		self.WIDTH = self.DISPLAY_INFO.current_w - self.WINDOW_WIDTH_OFFSET				# Screen width.
 		self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))				# Set display mode,
-		self.clock = pygame.time.Clock()												# Create clock.
+		self.clock = pygame.time.Clock()												# Create the clock.
+		self.NET = pygame.Rect(self.WIDTH/2, 0, 1, self.HEIGHT)							# Create the net.
 		
 	# Check if the ball has collided with a wall.
 	def check_ball_hits_wall(self):
@@ -131,9 +131,6 @@ class Pong:
 			self.BALL_WIDTH,
 			self.BALL_WIDTH
 		))
-		
-		# NET
-		self.central_line = pygame.Rect(self.WIDTH/2, 0, 1, self.HEIGHT)
 	
 	# Main menu - allows users to play or exit the program.
 	def main_menu(self):
@@ -223,7 +220,7 @@ class Pong:
 			self.check_ball_hits_wall()
 			
 			# MOVE & DRAW
-			pygame.draw.rect(self.screen, self.WHITE, self.central_line)	# NET
+			pygame.draw.rect(self.screen, self.WHITE, self.NET)	# NET
 			
 			for paddle in self.paddles:										# PADDLES
 				paddle.move_paddle(self.HEIGHT)
