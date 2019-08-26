@@ -67,8 +67,10 @@ class Pong:
 		self.MENU_GREEN = (0, 255, 0)
 		self.MENU_RED = (255, 0, 0)
 
-		# Create a font for main menu title text.
-		self.TITLE_MENU_FONT = pygame.font.SysFont(None, 124)
+		# Create a f,ain menu fonts.
+		self.TITLE_MENU_FONT = pygame.font.SysFont(pygame.font.get_default_font(), 124)
+		self.BUTTON_MENU_FONT = pygame.font.SysFont(pygame.font.get_default_font(), 22)
+
 		
 		# Screen setup.
 		pygame.display.set_caption("Pygame Pong")										# Window caption.
@@ -140,21 +142,33 @@ class Pong:
 			self.screen.fill(self.BLACK)
 
 			# Title text
-			self.TITLE_MENU_TEXT = self.TITLE_MENU_FONT.render("PYGAME PONG", True, self.WHITE)
-			self.screen.blit(self.TITLE_MENU_TEXT, ((self.WIDTH/2) - (self.TITLE_MENU_TEXT.get_rect().width/2), self.HEIGHT * 0.20))
+			self.title_menu_text = self.TITLE_MENU_FONT.render("PYGAME PONG", True, self.WHITE)
+			self.screen.blit(
+				self.title_menu_text, (
+					(self.WIDTH/2) - (self.title_menu_text.get_rect().width/2),
+					self.HEIGHT * 0.20
+				)
+			)
 			
-			# Menu buttons
-			green_button = pygame.draw.rect(
+			# New Game menu button.
+			self.newgame_button = pygame.draw.rect(
 				self.screen,
 				self.MENU_GREEN, (
-					(self.WIDTH/2)-(self.MENU_BUTTON_WIDTH/2),
+					(self.WIDTH/2) - (self.MENU_BUTTON_WIDTH/2),
 					self.HEIGHT - (self.MENU_BUTTON_WIDTH + (self.MENU_BUTTON_WIDTH * 0.75)),
 					self.MENU_BUTTON_WIDTH,
 					self.MENU_BUTTON_HEIGHT
 				)
 			)
 
-			red_button = pygame.draw.rect(
+			# New Game menu button text.
+			self.newgame_button_text = self.BUTTON_MENU_FONT.render("NEW GAME", True, self.WHITE)
+			self.newgame_button_text_rect = self.newgame_button_text.get_rect()
+			self.newgame_button_text_rect.center = self.newgame_button.center
+			self.screen.blit(self.newgame_button_text, self.newgame_button_text_rect)
+
+			# Exit menu button.
+			self.exit_button = pygame.draw.rect(
 				self.screen,
 				self.MENU_RED, (
 					(self.WIDTH/2) - (self.MENU_BUTTON_WIDTH/2),
@@ -163,6 +177,12 @@ class Pong:
 					self.MENU_BUTTON_HEIGHT
 				)
 			)
+
+			# Exit menu button text.
+			self.exit_button_text = self.BUTTON_MENU_FONT.render("EXIT", True, self.WHITE)
+			self.exit_button_text_rect = self.exit_button_text.get_rect()
+			self.exit_button_text_rect.center = self.exit_button.center
+			self.screen.blit(self.exit_button_text, self.exit_button_text_rect)
 
 			# Check for mouse clicks on menu and OS close window buttons.
 			for event in pygame.event.get():
@@ -174,11 +194,11 @@ class Pong:
 					# Set the x, y postions of the mouse click.
 					x, y = event.pos
 					# START GAME
-					if green_button.collidepoint(x, y):
+					if self.newgame_button.collidepoint(x, y):
 						self.reset_game()
 						self.game_loop()
 					# EXIT GAME
-					if red_button.collidepoint(x, y):
+					if self.exit_button.collidepoint(x, y):
 						pygame.quit()
 						exit(0)						
 
