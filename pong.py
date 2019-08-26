@@ -67,8 +67,8 @@ class Pong:
 		self.MENU_GREEN = (0, 255, 0)
 		self.MENU_RED = (255, 0, 0)
 
-		# Create a f,ain menu fonts.
-		self.TITLE_MENU_FONT = pygame.font.SysFont(pygame.font.get_default_font(), 124)
+		# Create a main menu fonts.
+		self.TITLE_MENU_FONT = pygame.font.SysFont(pygame.font.get_default_font(), 130)
 		self.BUTTON_MENU_FONT = pygame.font.SysFont(pygame.font.get_default_font(), 22)
 
 		
