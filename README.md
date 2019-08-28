@@ -1,5 +1,6 @@
-# pygame_pong
+# Pygame Pong
 Pong with Python 3/Pygame. Base tutorial credit to Nick Sarbicki - https://nick.sarbicki.com/blog/learn-pygame-with-pong/
+
 
 ![pygame_pong_gameplay](https://user-images.githubusercontent.com/42113905/63886534-b0d5c880-c9a8-11e9-85c0-9500db5f44de.png)
 
