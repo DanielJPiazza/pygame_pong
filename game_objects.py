@@ -1,3 +1,4 @@
+# Standard imports.
 import pygame
 
 # PLAYER PADDLE CLASS
