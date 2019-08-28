@@ -86,11 +86,16 @@ class TitleScene(SceneManager):
                     exit(0)
     
     def update(self):
-        # Nothing to update, only checking for user button clicks.
-        pass
+        # Check current FPS.
+        self.current_fps = "FPS: " + str(int(clock.get_fps()))
     
     def render(self, screen):
+        # Clear the screen.
         screen.fill(BLACK)
+
+        # Current FPS.
+        self.current_fps_render = FONT_SM.render(self.current_fps, True, WHITE)
+        screen.blit(self.current_fps_render, (10, 10))
 
         # Title text
         title_menu_text = FONT_LG.render("PYGAME PONG", True, WHITE)
@@ -186,6 +191,9 @@ class GameScene(SceneManager):
                 exit(0)
      
     def update(self):
+        # Check current FPS.
+        self.current_fps = "FPS: " + str(int(clock.get_fps()))
+
          # Check if the ball has collided with a wall.
         for ball in self.balls:
             if ball.x > WIDTH or ball.x < 0:
@@ -201,7 +209,12 @@ class GameScene(SceneManager):
                     ball.angle = randint(-10, 10)
     
     def render(self, screen):
+        # Clear the screen.
         screen.fill(BLACK)
+
+        # Current FPS.
+        self.current_fps_render = FONT_SM.render(self.current_fps, True, WHITE)
+        screen.blit(self.current_fps_render, (10, 10))
         
         # Net.
         pygame.draw.rect(screen, WHITE, NET)
