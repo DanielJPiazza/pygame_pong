@@ -5,6 +5,7 @@ from random import randint
 # Custom imports.
 import parameters
 import game_objects
+import text_render_cache
 
 # Parent class for all game scenes.
 class SceneManager:
@@ -66,10 +67,9 @@ class TitleScene(SceneManager):
         self.screen.blit(self.current_fps_render, (10, 10))
 
         # Title text
-        title_menu_text = parameters.FONT_LG.render("PYGAME PONG", True, parameters.WHITE)
         self.screen.blit(
-            title_menu_text, (
-                (parameters.WIDTH/2) - (title_menu_text.get_rect().width/2),
+            text_render_cache.title_menu_text, (
+                (parameters.WIDTH/2) - (text_render_cache.title_menu_text.get_rect().width/2),
                 parameters.HEIGHT * 0.20
             )
         )
@@ -86,10 +86,9 @@ class TitleScene(SceneManager):
         )
 
         # "New Game" button text.
-        newgame_button_text = parameters.FONT_SM.render("NEW GAME", True, parameters.WHITE)
-        newgame_button_text_rect = newgame_button_text.get_rect()
-        newgame_button_text_rect.center = self.newgame_button.center
-        self.screen.blit(newgame_button_text, newgame_button_text_rect)
+        self.newgame_button_text_rect = text_render_cache.newgame_button_text.get_rect()
+        self.newgame_button_text_rect.center = self.newgame_button.center
+        self.screen.blit(text_render_cache.newgame_button_text, self.newgame_button_text_rect)
 
         # "Exit" button.
         self.exit_button = pygame.draw.rect(
@@ -103,10 +102,9 @@ class TitleScene(SceneManager):
         )
 
         # "Exit" button text.
-        exit_button_text = parameters.FONT_SM.render("EXIT", True, parameters.WHITE)
-        exit_button_text_rect = exit_button_text.get_rect()
-        exit_button_text_rect.center = self.exit_button.center
-        self.screen.blit(exit_button_text, exit_button_text_rect)
+        self.exit_button_text_rect = text_render_cache.exit_button_text.get_rect()
+        self.exit_button_text_rect.center = self.exit_button.center
+        self.screen.blit(text_render_cache.exit_button_text, self.exit_button_text_rect)
 
 class GameScene(SceneManager):
     def __init__(self, screen, clock):
@@ -250,10 +248,9 @@ class PauseScene(SceneManager):
         self.screen.blit(self.current_fps_render, (10, 10))
 
         # Pause menu text
-        pause_menu_text = parameters.FONT_LG.render("PAUSED", True, parameters.WHITE)
         self.screen.blit(
-            pause_menu_text, (
-                (parameters.WIDTH/2) - (pause_menu_text.get_rect().width/2),
+            text_render_cache.pause_menu_text, (
+                (parameters.WIDTH/2) - (text_render_cache.pause_menu_text.get_rect().width/2),
                 parameters.HEIGHT * 0.20
             )
         )
@@ -270,10 +267,9 @@ class PauseScene(SceneManager):
         )
 
         # "Resume" button text.
-        resume_button_text = parameters.FONT_SM.render("RESUME", True, parameters.WHITE)
-        resume_button_text_rect = resume_button_text.get_rect()
-        resume_button_text_rect.center = self.resume_button.center
-        self.screen.blit(resume_button_text, resume_button_text_rect)
+        self.resume_button_text_rect = text_render_cache.resume_button_text.get_rect()
+        self.resume_button_text_rect.center = self.resume_button.center
+        self.screen.blit(text_render_cache.resume_button_text, self.resume_button_text_rect)
 
         # "Exit" button.
         self.exit_button = pygame.draw.rect(
@@ -287,7 +283,6 @@ class PauseScene(SceneManager):
         )
 
         # "Exit" button text.
-        exit_button_text = parameters.FONT_SM.render("EXIT", True, parameters.WHITE)
-        exit_button_text_rect = exit_button_text.get_rect()
-        exit_button_text_rect.center = self.exit_button.center
-        self.screen.blit(exit_button_text, exit_button_text_rect)
+        self.exit_button_text_rect = text_render_cache.exit_button_text.get_rect()
+        self.exit_button_text_rect.center = self.exit_button.center
+        self.screen.blit(text_render_cache.exit_button_text, self.exit_button_text_rect)
