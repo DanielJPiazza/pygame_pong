@@ -8,7 +8,7 @@ pygame.init()
 # Custom imports.
 import game_objects
 import scenes
-import parameters as pm
+import parameters
 
 # Game loop.
 def run_game(starting_scene):
@@ -34,15 +34,15 @@ def run_game(starting_scene):
         # Required functions for each scene class.
         active_scene.process_input(filtered_events, pressed_keys)
         active_scene.update()
-        active_scene.render(pm.screen)
+        active_scene.render(parameters.screen)
         
         # Loads "next" scene set by switch_to_scene() for next game loop.
         active_scene = active_scene.next
         
         # Flip renders to the screen and tick the clock.
         pygame.display.flip()
-        pm.clock.tick(pm.FPS)
+        parameters.clock.tick(parameters.FPS)
 
 # Start the program.
 if __name__ == "__main__":
-    run_game(scenes.TitleScene(pm.screen, pm.clock))
+    run_game(scenes.TitleScene(parameters.screen, parameters.clock))

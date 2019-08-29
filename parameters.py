@@ -31,3 +31,6 @@ GREEN = (0, 255, 0)
 # Global fonts.
 FONT_SM = pygame.font.SysFont(pygame.font.get_default_font(), 24)
 FONT_LG = pygame.font.SysFont(pygame.font.get_default_font(), 124)
+
+# Paused flag, to skip new game object creation when GameScene resumes from a pause.
+RESUME_FROM_PAUSED = False

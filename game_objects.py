@@ -1,6 +1,10 @@
 # Standard imports.
 import pygame
 
+# Game objects to save state during pause.
+paddles = []
+balls = []
+
 # PLAYER PADDLE CLASS
 class Paddle(pygame.Rect):
 	def __init__(self, velocity, up_key, down_key, *args, **kwargs):
