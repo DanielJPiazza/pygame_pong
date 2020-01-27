@@ -22,7 +22,7 @@ Last tested with:<br>
 [Python](https://www.python.org/) (3.8.1)<br>
 [PyGame](https://www.pygame.org/) (1.9.6)
 
-### Installing
+### How to Run
 
 Clone repo.<br>
 Install dependency:
