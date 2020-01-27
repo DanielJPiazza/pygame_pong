@@ -1,7 +1,5 @@
 # Pygame Pong
 
-Pong with Python (Pygame).
-
 Base tutorial credit to Nick Sarbicki - https://nick.sarbicki.com/blog/learn-pygame-with-pong/
 
 - Player 1 (left paddle) moves with 'W' and 'S' keys.
