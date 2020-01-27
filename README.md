@@ -21,8 +21,8 @@ Base tutorial credit to Nick Sarbicki - https://nick.sarbicki.com/blog/learn-pyg
 
 Last tested with:<br>
 
-[Python](https://www.python.org/) (3.8.1).<br>
-[PyGame](https://www.pygame.org/) (1.9.6).
+[Python](https://www.python.org/) (3.8.1)<br>
+[PyGame](https://www.pygame.org/) (1.9.6)
 
 ### Installing
 
